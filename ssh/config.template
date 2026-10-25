@@ -1,0 +1,24 @@
+# Copy to ~/.ssh/config after replacing BASTION_PUBLIC_IP with the Terraform output.
+# Keep the private key file private and never upload it to GitHub or your submission.
+Host ewb-bastion
+  HostName BASTION_PUBLIC_IP
+  User ec2-user
+  IdentityFile ~/.ssh/ewb-lab.pem
+  IdentitiesOnly yes
+  StrictHostKeyChecking accept-new
+
+Host ewb-app-a
+  HostName 10.10.2.10
+  User ec2-user
+  IdentityFile ~/.ssh/ewb-lab.pem
+  IdentitiesOnly yes
+  ProxyJump ewb-bastion
+  StrictHostKeyChecking accept-new
+
+Host ewb-app-b
+  HostName 10.20.1.10
+  User ec2-user
+  IdentityFile ~/.ssh/ewb-lab.pem
+  IdentitiesOnly yes
+  ProxyJump ewb-bastion
+  StrictHostKeyChecking accept-new

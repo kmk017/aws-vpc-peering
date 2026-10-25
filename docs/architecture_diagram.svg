@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="1200" height="760" fill="#f8fafc"/>
+<text x="600" y="38" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#0f172a">AWS VPC Peering — Planned Architecture</text>
+<text x="600" y="63" text-anchor="middle" font-family="Arial" font-size="14" fill="#475569">Design diagram only — no AWS deployment evidence</text>
+<rect x="28" y="100" width="540" height="600" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="48" y="135" font-family="Arial" font-size="20" font-weight="bold" fill="#1d4ed8">VPC A — 10.10.0.0/16</text>
+<rect x="52" y="160" width="492" height="220" rx="12" fill="#dbeafe" stroke="#60a5fa" stroke-width="2"/>
+<text x="70" y="188" font-family="Arial" font-size="16" font-weight="bold" fill="#1e40af">Public subnet — 10.10.1.0/24</text>
+<rect x="78" y="212" width="440" height="130" rx="10" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+<text x="98" y="242" font-family="Arial" font-size="17" font-weight="bold" fill="#0f172a">ewb-bastion</text>
+<text x="98" y="269" font-family="Arial" font-size="14" fill="#334155">Private IP: 10.10.1.10</text>
+<text x="98" y="294" font-family="Arial" font-size="14" fill="#334155">Public IPv4: assigned by AWS</text>
+<text x="98" y="319" font-family="Arial" font-size="13" fill="#334155">SSH TCP/22 restricted to student IP /32</text>
+<rect x="52" y="405" width="492" height="255" rx="12" fill="#dbeafe" stroke="#60a5fa" stroke-width="2"/>
+<text x="70" y="433" font-family="Arial" font-size="16" font-weight="bold" fill="#1e40af">Private subnet — 10.10.2.0/24</text>
+<rect x="78" y="457" width="440" height="150" rx="10" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+<text x="98" y="490" font-family="Arial" font-size="17" font-weight="bold" fill="#0f172a">ewb-app-a</text>
+<text x="98" y="518" font-family="Arial" font-size="14" fill="#334155">Private IP: 10.10.2.10</text>
+<text x="98" y="544" font-family="Arial" font-size="14" fill="#334155">No public IPv4; no default internet route</text>
+<text x="98" y="574" font-family="Arial" font-size="13" fill="#334155">Route to 10.20.0.0/16 via peering</text>
+<rect x="632" y="100" width="540" height="600" rx="16" fill="#ecfdf5" stroke="#059669" stroke-width="3"/>
+<text x="652" y="135" font-family="Arial" font-size="20" font-weight="bold" fill="#047857">VPC B — 10.20.0.0/16</text>
+<text x="652" y="163" font-family="Arial" font-size="14" fill="#065f46">No Internet Gateway; private workload only</text>
+<rect x="656" y="200" width="492" height="460" rx="12" fill="#d1fae5" stroke="#34d399" stroke-width="2"/>
+<text x="674" y="230" font-family="Arial" font-size="16" font-weight="bold" fill="#065f46">Private subnet — 10.20.1.0/24</text>
+<rect x="682" y="280" width="440" height="190" rx="10" fill="#fff" stroke="#059669" stroke-width="2"/>
+<text x="702" y="315" font-family="Arial" font-size="17" font-weight="bold" fill="#0f172a">ewb-app-b</text>
+<text x="702" y="345" font-family="Arial" font-size="14" fill="#334155">Private IP: 10.20.1.10</text>
+<text x="702" y="373" font-family="Arial" font-size="14" fill="#334155">No public IPv4; no default internet route</text>
+<text x="702" y="403" font-family="Arial" font-size="13" fill="#334155">Return route to 10.10.0.0/16 via peering</text>
+<rect x="510" y="260" width="180" height="86" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="600" y="288" text-anchor="middle" font-family="Arial" font-size="15" font-weight="bold" fill="#92400e">VPC Peering</text>
+<text x="600" y="311" text-anchor="middle" font-family="Arial" font-size="13" fill="#92400e">ewb-a-b-peer</text>
+<text x="600" y="331" text-anchor="middle" font-family="Arial" font-size="12" fill="#92400e">intended route path</text>
+<path d="M518 520 C565 500 620 500 682 375" fill="none" stroke="#059669" stroke-width="4" stroke-dasharray="9 7"/>
+<path d="M682 390 C620 535 565 545 518 545" fill="none" stroke="#2563eb" stroke-width="4" stroke-dasharray="9 7"/>
+<text x="600" y="730" text-anchor="middle" font-family="Arial" font-size="13" fill="#475569">Routes required on both sides • Security groups restrict SSH and ICMP • Bastion uses ProxyJump</text>
+</svg>

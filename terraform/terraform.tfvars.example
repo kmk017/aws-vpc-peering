@@ -1,0 +1,6 @@
+aws_region            = "ap-south-1"
+student_name          = "Mohan Kumar K"
+student_public_ip     = "REPLACE_WITH_YOUR_PUBLIC_IPV4"
+instance_type         = "t3.micro"
+key_name              = "ewb-lab"
+enable_peering_routes = true
